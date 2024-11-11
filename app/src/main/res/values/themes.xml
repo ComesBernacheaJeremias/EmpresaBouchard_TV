@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.EmpresaBouchard_TV" parent="Theme.AppCompat.DayNight.NoActionBar" />
+</resources>
