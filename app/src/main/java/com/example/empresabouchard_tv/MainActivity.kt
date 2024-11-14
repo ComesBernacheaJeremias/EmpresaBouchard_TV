@@ -1,6 +1,7 @@
 package com.example.empresabouchard_tv
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
@@ -22,18 +23,37 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Surface
 import com.example.empresabouchard_tv.ui.theme.EmpresaBouchard_TVTheme
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalTvMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val db = Firebase.firestore
+        //Obtener datos
+        val docRef = db.collection("persona").document("111821")
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.i("Corcho","DocumentSnapshot data: ${document.data}")
+                } else {
+                    Log.d("Corcho", "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("Corcho", "get failed with ", exception)
+            }
+
         setContent {
             EmpresaBouchard_TVTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     shape = RectangleShape
                 ) {
-                    initUI()
+                    InitUI()
                 }
             }
         }
@@ -42,14 +62,17 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun initUI(){
+fun InitUI(){
+
+
+
     Column(modifier = Modifier.fillMaxSize().padding(10.dp)) {
         Box(
             modifier = Modifier
                 .fillMaxWidth(), contentAlignment = Alignment.Center
         ){Text("Nombre del fallecido")}
         Spacer(modifier = Modifier.height(10.dp))
-        Box() {
+        Box {
             Column {
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Box(modifier = Modifier.height(40.dp).width(100.dp)) {
@@ -76,19 +99,11 @@ fun initUI(){
     }
 }
 
-@OptIn(ExperimentalTvMaterial3Api::class)
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     EmpresaBouchard_TVTheme {
-       initUI()
+       InitUI()
     }
 }

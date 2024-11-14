@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "687975039376",
+    "project_id": "empresabouchard-b7081",
+    "storage_bucket": "empresabouchard-b7081.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:687975039376:android:53f9268dcd8812249e7315",
+        "android_client_info": {
+          "package_name": "com.example.empresabouchard_tv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkmdqiU5fQVcNLaB0KywajPlV2X7_eFR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
