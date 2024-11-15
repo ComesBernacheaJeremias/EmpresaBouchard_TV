@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
+    //navController
+  //  alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -68,6 +70,8 @@ dependencies {
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation("com.google.firebase:firebase-analytics")
+    //navController
+    implementation ("androidx.navigation:navigation-compose:2.7.3")
 
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
