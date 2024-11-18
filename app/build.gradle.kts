@@ -72,6 +72,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     //navController
     implementation ("androidx.navigation:navigation-compose:2.7.3")
+    implementation(libs.androidx.material3.android)
 
 
     androidTestImplementation(platform(libs.androidx.compose.bom))

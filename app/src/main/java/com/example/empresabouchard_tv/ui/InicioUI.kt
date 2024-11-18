@@ -1,6 +1,7 @@
 package com.example.empresabouchard_tv.ui
 
 
+import android.annotation.SuppressLint
 import android.content.ClipData.Item
 import android.util.Log
 import androidx.compose.foundation.clickable
@@ -21,16 +22,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.tv.material3.Card
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Text
-import com.example.empresabouchard_tv.DetailsScreen
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
 
 
 @Composable
@@ -39,6 +38,7 @@ fun InicioUI(navController: NavController) {
 
     // Crear un estado para manejar la lista observable
     val listaMutable = remember { mutableStateListOf<String>() }
+
 
 
     // Obtener datos de Firebase
@@ -53,6 +53,7 @@ fun InicioUI(navController: NavController) {
                     //getString("Nombre") ?: "Desconocido"
                     listaMutable.add(nombre)
                 }
+                Log.i("Corcho", "Lista Mutable: ${listaMutable.toString()}")
             }
             .addOnFailureListener { exception ->
                 Log.i("Corcho", "Error getting documents: ", exception)
@@ -79,13 +80,13 @@ fun InicioUI(navController: NavController) {
 @Composable
 fun NombresCard(Nombre: String, navController: NavController) {
 
-
     Card(modifier = Modifier
         .height(100.dp)
         .clickable {
             Log.i("Corcho", "Clickitik $Nombre")
             //buscarDatosPrueba(Nombre)
-            navController.navigate("datos/$Nombre")
+            //navController.navigate("datos/$Nombre")
+            navController.navigate("prueba")
         }, onClick = { Log.i("Corcho", "Click") }) {
         Text(
             text = Nombre,
