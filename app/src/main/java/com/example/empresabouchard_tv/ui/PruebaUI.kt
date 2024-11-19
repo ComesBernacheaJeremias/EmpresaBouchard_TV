@@ -3,6 +3,7 @@ package com.example.empresabouchard_tv.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -12,7 +13,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,6 +35,11 @@ fun Prueba() {
     val customFontFamily = FontFamily(
         Font(R.font.inriaserif_normal) // Define la fuente desde tus recursos
     )
+    //Con este decido que parte de la lista se va a mostrar
+    val listState = rememberLazyListState()
+    LaunchedEffect(Unit) {
+        listState.animateScrollToItem(2)
+    }
 
     Column(
         modifier = Modifier
@@ -86,18 +95,17 @@ fun Prueba() {
                     .background(Color.LightGray)
                     .padding(16.dp)
             ) {
-                Text(
-                    text = "Mensajes Recibidos",
-                    fontSize = 40.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-                for (i in 1..5) { // Simulando mensajes
-                    Text(
-                        text = "Mensaje $i: Este es el contenido del mensaje.",
-                        fontSize = 30.sp,
-                        modifier = Modifier.padding(vertical = 4.dp)
-                    )
+                LazyColumn(state = listState, // Controla el estado del desplazamiento
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(16.dp)
+                ) {
+                    for (i in 1..5) { // Simulando mensajes
+                        item {
+                            CardMensajes()
+
+                        }
+
+                    }
                 }
             }
         }

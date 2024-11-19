@@ -1,5 +1,6 @@
 package com.example.empresabouchard_tv.ui
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -12,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp // Para medidas como padding y height
 import androidx.compose.ui.unit.sp // Para tamaños de fuente
 import com.example.empresabouchard_tv.ui.theme.EmpresaBouchard_TVTheme
+import com.example.empresabouchard_tv.ui.theme.LogoColor
 
 
 @Composable
@@ -20,6 +22,7 @@ fun CardMensajes() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .border(2.dp, color = LogoColor, shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
     ) {
         Column(
             modifier = Modifier
@@ -29,14 +32,14 @@ fun CardMensajes() {
             Text(
                 text = "nombre apellido",
                 fontWeight = FontWeight.Bold, // Negrita
-                fontSize = 18.sp,
+                fontSize = 40.sp,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
 
             // Mensaje
             Text(
                 text = "mensaje aklsaklsd asdkjalskjdj askldja lksdjakls djaklsjdl alskdjal skdjalk sdjlaks djlkjkljklja sdkljlk jklj asdklja sdkljasldkjasdlkalksdja ",
-                fontSize = 16.sp,
+                fontSize = 30.sp,
                 maxLines = 3, // Limita a 3 líneas
                 overflow = TextOverflow.Ellipsis // Muestra "..." si supera el límite
             )
