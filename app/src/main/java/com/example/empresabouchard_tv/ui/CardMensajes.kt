@@ -30,7 +30,7 @@ fun CardMensajes() {
         ) {
             // Nombre y apellido
             Text(
-                text = "nombre apellido",
+                text = "Nombre Apellido",
                 fontWeight = FontWeight.Bold, // Negrita
                 fontSize = 40.sp,
                 modifier = Modifier.padding(bottom = 8.dp)
